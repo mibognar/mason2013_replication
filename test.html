@@ -1,0 +1,42 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="config.js" charset="utf-8"></script>
+    <script src="submit.js" charset="utf-8"></script>
+    <script src="save.js" charset="utf-8"></script>
+    <div id="infodiv" class="" style="display: flex; position: absolute; top:50%;left:50%; margin-top:-75px;margin-left:-100px; width:200px; height:150px">
+      <h1 id="word" style="display: inline; position: relative; margin:auto;line-height:51px;vertical-align:middle;"></h1>
+    </div>
+    <div id="thanksdiv" style="display: none; position: absolute; top:50%;left:50%; margin-top:-75px;margin-left:-100px; width:200px; height:150px">
+      <h1 id="thanks" style="display: inline; position: relative; margin:auto;line-height:51px;vertical-align:middle;">Köszönjük a részvételt! Bezárhatod ezt az ablakot!</h1>
+    </div>
+    <div id="questiondiv" class="question" style="display:none; position: absolute; top:50%;left:50%; margin-top:-161px;margin-left:-100px; width:200px; height:150px">
+      <h4 id="questionform"></h4>
+      <form class="form" style="display: inline; position: relative; margin:auto;line-height:51px;vertical-align:middle;">
+        <br>
+        <label ><input type="radio" name="1" value="1"> - 1
+        </label>
+        <br>
+        <label ><input type="radio" name="1" value="2"> - 2
+        </label>
+        <br>
+        <label ><input type="radio" name="1" value="3"> - 3
+        </label>
+        <br>
+        <label ><input type="radio" name="1" value="4"> - 4
+        </label>
+        <br>
+        <label ><input type="radio" name="1" value="5"> - 5
+        </label>
+        <br>
+        <button type="button" name="button" onclick="radio_submit()">SUBMIT</button>
+      </form>
+    </div>
+
+
+    <script src="sequence.js" charset="utf-8"></script>
+  </body>
+</html>

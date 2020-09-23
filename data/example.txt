@@ -1,0 +1,11 @@
+id,block,subscale,word,answer
+12,stagnant,positive,erős,3
+12,stagnant,negative,zaklatott,4
+12,stagnant,negative,kiborult,5
+12,stagnant,positive,érdeklődő,4
+12,stagnant,positive,izgatott,2
+12,progressive,positive,érdeklődő,3
+12,progressive,negative,zaklatott,5
+12,progressive,negative,kiborult,4
+12,progressive,positive,erős,3
+12,progressive,positive,izgatott,2
