@@ -5,6 +5,9 @@ var blocknum = 0;
 var shuffled;
 var currentBlock;
 var questionword;
+var practice = 1;
+var greetings = 1;
+var practiceBlock = [];
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const relay = urlParams.get("relay");
@@ -52,27 +55,30 @@ const database = {
       "type":"progressive"},
       {"content":["arany","fém","vas","kemény","munka","építkezés","tervrajz","térkép","iránytű","szögmérő","vonalzó","egyenes"],
       "type":"progressive"},
-    ]
+    ],
   },
-  "panas_questions":[{"word":"érdeklődő","subscale":"positive"},
-  {"word":"kiborult","subscale":"negative"},
-{"word":"izgatott","subscale":"positive"},
-{"word":"zaklatott","subscale":"negative"},
-{"word":"erős","subscale":"positive"}
-{"word":"rémült","subscale":"negative"},
-{"word":"ellenséges","subscale":"negative"},
-{"word":"lelkes","subscale":"positive"},
-{"word":"büszke","subscale":"positive"},
-{"word":"ingerlékeny","subscale":"negative"},
-{"word":"éber","subscale":"positive"},
-{"word":"megszégyenült","subscale":"negative"},
-{"word":"elhivatott","subscale":"positive"},
-{"word":"elszánt, határozott","subscale":"positive"},
-{"word":"figyelmes","subscale":"positive"},
-{"word":"feszült","subscale":"negative"},
-{"word":"aktív, élénk","subscale":"positive"},
-{"word":"félénk","subscale":"negative"},
-{"word":"ideges","subscale":"negative"}]
+  "panas_questions":[
+    {"word":"érdeklődő","subscale":"positive"},
+    {"word":"kiborult","subscale":"negative"},
+    {"word":"izgatott","subscale":"positive"},
+    {"word":"zaklatott","subscale":"negative"},
+    {"word":"bűntudatom van","subscale":"negative"},
+    {"word":"erős","subscale":"positive"},
+    {"word":"rémült","subscale":"negative"},
+    {"word":"ellenséges","subscale":"negative"},
+    {"word":"lelkes","subscale":"positive"},
+    {"word":"büszke","subscale":"positive"},
+    {"word":"ingerlékeny","subscale":"negative"},
+    {"word":"éber","subscale":"positive"},
+    {"word":"megszégyenült","subscale":"negative"},
+    {"word":"elhivatott","subscale":"positive"},
+    {"word":"elszánt, határozott","subscale":"positive"},
+    {"word":"figyelmes","subscale":"positive"},
+    {"word":"feszült","subscale":"negative"},
+    {"word":"aktív, élénk","subscale":"positive"},
+    {"word":"félénk","subscale":"negative"},
+    {"word":"ideges","subscale":"negative"},
+  ]
 }
 var participant_data = [];
 participant_data.push(["id","block","subscale","word","answer"]);

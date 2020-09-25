@@ -1,0 +1,66 @@
+.infodiv {
+  display: flex;
+  position: absolute;
+  top:50%;left:50%;
+  margin-top:-75px;
+  margin-left:-100px;
+  width:200px;
+  height:150px;
+}
+
+.word {
+  display: inline;
+  position: relative;
+  margin:auto;
+  line-height:51px;
+  vertical-align:middle;
+}
+
+.thanksdiv {
+  display: none;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-top:-75px;
+  margin-left:-100px;
+  height:150px;
+}
+
+.thanks {
+  display: inline;
+  position: relative;
+  margin:auto;
+  line-height:51px;
+  vertical-align:middle;
+}
+
+.question{
+  display:none;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-top:-161px;
+  margin-left:-334px;
+  height:150px;
+}
+
+h3{
+  display: block;
+  text-align: center;
+  position: relative;
+  margin-left: auto;
+  color:blue;
+}
+
+
+.form {
+  display: inline;
+  position: relative;
+  margin:auto;
+  line-height:51px;
+  vertical-align:middle;
+}
+button{
+  position: relative;
+  left: 285px;
+}

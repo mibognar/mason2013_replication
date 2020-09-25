@@ -1,5 +1,5 @@
 var wordElement = document.getElementById("word");
-var ordered = [0,1,2,3,4];
+var ordered = Array.from(Array(20).keys());
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -18,15 +18,45 @@ function shuffle(array) {
 
   return array;
 }
+function start(){
+  console.log("experiment started");
+  for (var j=0; j<database.word_blocks["stagnant"].length; j++){
+    practiceBlock.push(database.word_blocks["stagnant"][j].content);
+  }
+  for (var j=0; j<database.word_blocks["progressive"].length; j++){
+    practiceBlock.push(database.word_blocks["progressive"][j].content);
+  }
+  practiceBlock = shuffle(practiceBlock);
+  practiceBlock.length = 5;
+  console.log(practiceBlock);
+  setTimeout(blank,500,wordElement);
+}
 function blank(wordElement){
   questionnum = 0;
   wordElement.innerHTML = "";
-  if (listnum >= database.word_blocks[currentBlock].length){
+  if (practice==1){
+    block_decider(practiceBlock,endPractice);
+  }else{
+    block_decider(currentBlock,showQuestion);
+  }
+}
+function endPractice(){
+  console.log("practice ended")
+}
+function block_decider(block,endFunction){
+  if (practice = 1){
+    var myblock = practiceBlock;
+    var mylist = practiceBlock[listnum];
+  }else{
+    var myblock = database.word_blocks[block];
+    var mylist = database.word_blocks[block][listnum].content;
+  }
+  if (listnum >= myblock.length){
     shuffled = shuffle(ordered);
-    setTimeout(showQuestion,500,shuffled);
+    console.log(shuffled);
+    setTimeout(endFunction,500,shuffled);
   }
   else{
-    var mylist = database.word_blocks[currentBlock][listnum].content;
     if (wordnum<mylist.length){
       setTimeout(changeWord, 500, wordElement,mylist[wordnum]);
     }
@@ -53,11 +83,11 @@ function showQuestion(shuffled){
   questiondiv = document.getElementById('questiondiv');
   infodiv.style.display = "none";
   questiondiv.style.display = "block";
-  const sentence = "Mennyire vagy ";
+  const sentence = "Az alábbi válaszok közül válaszd ki, mennyire jellemző a jelen pillanatban rád az alábbi kifejezés:";
   questionword = database.panas_questions[shuffled[questionnum]].word;
-  var question = questionword + "?";
+  var question = questionword;
   questionform = document.getElementById('questionform');
-  questionform.innerHTML = sentence + question;
+  questionform.innerHTML = sentence + "<br>" + "<h3>"+ question+"</h3>";
 }
 
-blank(wordElement);
+start();
