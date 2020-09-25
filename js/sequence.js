@@ -41,7 +41,10 @@ function blank(wordElement){
   }
 }
 function endPractice(){
-  console.log("practice ended")
+  console.log("practice ended";
+  practice = 0;
+
+)
 }
 function block_decider(block,endFunction){
   if (practice = 1){
