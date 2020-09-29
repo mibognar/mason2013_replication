@@ -8,11 +8,57 @@
     <script src="js/config.js" charset="utf-8"></script>
     <script src="js/submit.js" charset="utf-8"></script>
     <script src="js/save.js" charset="utf-8"></script>
+    <script src="js/demographics.js" charset="utf-8"></script>
     <div id="infodiv" class="infodiv">
       <h1 id="word" class="word"></h1>
     </div>
     <div id="thanksdiv" class="thanksdiv">
       <h1 id="thanks" class="thanks">Köszönjük a részvételt! Bezárhatod ezt az ablakot!</h1>
+    </div>
+    <div class="greetingsdiv" id="greetingsdiv">
+      <h2 class="title">Tájékoztató nyilatkozat</h2>
+        <p>
+          <strong>A vizsgálat célja:</strong> A kutatás célja egy korábbi kísérlet megismétlése. A kísérlet azt kutatja, hogyan hat az egyén hangulatára különböző asszociációs sorok passzív megfigyelése..
+          <br><br><strong>Adatkezelés:</strong> Szigorúan bizalmasan kezelünk minden olyan személyes információt, amit a kutatás keretén belül gyűjtünk össze. A kutatás során nyert adatokat kóddal ellátva biztonságos számítógépeken tároljuk. A kutatás során nyert adatokat összegezzük. Az ELTE PPK Affektív Pszichológia Tanszék Döntéspszichológiai Kutatócsoportja, mint adatkezelő, fenti személyes adataimat bizalmasan kezeli, más adatkezelőnek, adatfeldolgozónak nem adja át. E tényállás részleteit a „Hozzájárulás adatkezeléshez” c. dokumentum tartalmazza: http://decisionlab.elte.hu/hozzajarulas-adatkezeleshez/ Az adatkezelésről szóló szabályozásról részletesebben pedig itt tájékozódhat: https://ppk.elte.hu/file/Hozzajarulas_adatkezeleshez_melleklet_2018.pdf A kutatás egy későbbi szakaszában még egy kísérletet fogunk kiküldeni Önnek. A kutatás során nyert személyes adatait arra használjuk fel, hogy a két kísérletben adott válaszait össze tudjuk kötni. Az azonosítására alkalmas adatokat (NEPTUN kód) ezután törölni fogjuk, így válaszai már nem lesznek semmilyen módon Önhöz köthetők. Az anononimizált adatait ezután más kutatókkal megosztjuk.
+          <br><br><strong>Részvétel:</strong> A kutatásban való részvétel teljesen önkéntes. A vizsgálatot bármikor indoklás nélkül megszakíthatod, vagy a kérdések megválaszolását megtagadhatod a böngésző ablak bezárásával. <strong>FIGYELEM:</strong> A kísérlet a nyugalom megzavarására alkalmas szavakat is tartalmazhat.
+          Ha bármilyen kérdésed, aggályod vagy panaszod van a kísérlettel kapcsolatban, kérem keresd Bognár Miklóst:  <a href="">miklos.bognar92@gmail.com</a>!
+          <br>Továbbá írhatsz az ELTE adatvédelmi tisztviselőjének Dr. Rigó Kingának (strategia@rk.elte.hu) [ELTE Adat- és Stratégiai Információkezelési Iroda; 1053 Budapest, Ferenciek tere 6.]
+        </p>
+      <h2 class="title">Beleegyező nyilatkozat</h2>
+      <p>
+        Felelősségem teljes tudatában kijelentem, hogy a mai napon az Eötvös Loránd Tudományegyetem, Dr. Aczél Balázs kutatásvezető által végzett vizsgálatban önként veszek részt; a vizsgálat jellegéről, annak megkezdése előtt kielégítő tájékoztatást kaptam; nem szenvedek semmilyen pszichiátriai betegségben; a vizsgálat idején alkohol vagy drogok hatása alatt nem állok.
+        <br><br>
+        Tudomásul veszem, hogy az azonosításomra alkalmas személyi adataimat bizalmasan kezelik. Hozzájárulok ahhoz, hogy a vizsgálat során a rólam felvett, személyem azonosítására nem alkalmas adatok más kutatók számára is hozzáférhetők legyenek. Fenntartom a jogot arra, hogy a vizsgálat során annak folytatásától bármikor elállhassak. Ilyen esetben a rólam addig felvett adatokat törölni kell. Tudomásul veszem, hogy csak a teljesen befejezett kitöltésért kapok pontot a Pszichológiai kísérletben és tudományos aktivitásban való részvétel nevű kurzuson.
+      </p>
+      <form class="accept">
+        <input id="accept1"type="checkbox" name="accept" value="">
+        <label for="accept1"><strong>A fenti feltételekkel egyetértek és hozzájárulok a kutatásban való részvételhez.</strong></label>
+        <br><br>
+        <input id="accept2" type="checkbox" name="accept" value="">
+        <label for="accept2"><strong>A kutatásban való részvétel körülményeiről részletes tájékoztatást kaptam.</strong></label>
+        <br><br>
+        <button class="accept_button" type="button" name="button" onclick="showDemographics()">TOVÁBB</button>
+      </form>
+
+    </div>
+    <div id="demodiv" class="demodiv">
+      <h2 class="title">Demográfiai adatok</h2>
+      <p>Kérjük adj meg néhány demográfiai adatot, majd kattints a "tovább" gombra!</p>
+      <form class="demographics_form">
+        <select id="gender" class="demoinput" name="gender">
+          <option value="empty_answer">Nem</option>
+          <option value="female">Nő</option>
+          <option value="male">Férfi</option>
+          <option value="other">Más</option>
+          <option value="refuse">Nem szeretnék válaszolni</option>
+        </select>
+        <br><br>
+        <input id="age" class="demoinput" type="text" name="age" value="" placeholder="Kor">
+        <br><br>
+        <input id="neptun" class="demoinput" type="text" name="neptun" placeholder="Neptun kód">
+        <br><br>
+        <button class="accept_button" type="button" name="button" onclick="submitDemographics()">TOVÁBB</button>
+      </form>
     </div>
     <div id="questiondiv" class="question">
       <h4 id="questionform"></h4>
@@ -33,7 +79,7 @@
         <label ><input type="radio" name="radio" value="5"> - 5 - Nagyon
         </label>
         <br>
-        <button type="button" name="button" onclick="radio_submit()">MEGERŐSÍT</button>
+        <button class="question_button" type="button" name="button" onclick="radio_submit()">MEGERŐSÍT</button>
       </form>
     </div>
 

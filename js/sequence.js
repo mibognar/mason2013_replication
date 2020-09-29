@@ -1,5 +1,9 @@
 var wordElement = document.getElementById("word");
 var ordered = Array.from(Array(20).keys());
+infodiv = document.getElementById("infodiv");
+questiondiv = document.getElementById('questiondiv');
+greetingsdiv = document.getElementById('greetingsdiv');
+demodiv = document.getElementById('demodiv');
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -18,6 +22,12 @@ function shuffle(array) {
 
   return array;
 }
+function showGreeting(){
+  infodiv.style.display = "none";
+  questiondiv.style.display = "none";
+  greetingsdiv.style.display = "block";
+}
+
 function start(){
   console.log("experiment started");
   for (var j=0; j<database.word_blocks["stagnant"].length; j++){
@@ -29,7 +39,7 @@ function start(){
   practiceBlock = shuffle(practiceBlock);
   practiceBlock.length = 5;
   console.log(practiceBlock);
-  setTimeout(blank,500,wordElement);
+  setTimeout(showGreeting,500);
 }
 function blank(wordElement){
   questionnum = 0;
@@ -41,11 +51,10 @@ function blank(wordElement){
   }
 }
 function endPractice(){
-  console.log("practice ended";
+  console.log("practice ended");
   practice = 0;
-
-)
 }
+
 function block_decider(block,endFunction){
   if (practice = 1){
     var myblock = practiceBlock;
@@ -82,8 +91,6 @@ function showQuestion(shuffled){
     }
   wordnum = 0;
   listnum = 0;
-  infodiv = document.getElementById("infodiv");
-  questiondiv = document.getElementById('questiondiv');
   infodiv.style.display = "none";
   questiondiv.style.display = "block";
   const sentence = "Az alábbi válaszok közül válaszd ki, mennyire jellemző a jelen pillanatban rád az alábbi kifejezés:";

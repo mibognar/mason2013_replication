@@ -35,7 +35,7 @@ function radio_submit(){
         blank(wordElement);
       }else{
         console.log(participant_data);
-        save_data(participant_data);
+        save_data(participant_data,'save.php');
         questiondiv.style.display = "none";
         thanksdiv.style.display = "flex";
       }
