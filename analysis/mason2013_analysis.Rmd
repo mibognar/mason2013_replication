@@ -1,0 +1,79 @@
+---
+title: "mason2013_analysis"
+output: html_document
+---
+#importing libraries
+
+```{r, message=F,warning=F}
+library(tidyverse)
+library(ez)
+```
+
+
+###Read all data files
+```{r message=F}
+mydir = "data"
+
+mydata = dir(mydir, full.names = T) %>% 
+  map_df(read_csv)
+```
+
+###Create dummy if there is no data available - SKIP IF THERE IS DATA
+```{r}
+create_dummy = function(myid){
+  tibble(
+    id=myid,
+    block=c(rep("progressive",20),rep("stagnant",20)),
+    subscale=c(rep("positive",10),rep("negative",10),rep("positive",10),rep("negative",10)),
+    word=c(rep("whatevs",40)),
+    answer=sample(1:5,40,replace = T)
+  )
+}
+mydata = map_df(1:100,~create_dummy(.x))
+```
+
+###descriptive statistics of block and subscale groups
+```{r message=F,warning=F}
+mydata %>% 
+  group_by(block,subscale) %>% 
+  summarize(mean(answer), sd(answer), median(answer))
+```
+```{r}
+ggplot(mydata,aes(mydata$block,mydata$answer,color=factor(mydata$subscale)))+geom_boxplot()
+```
+
+
+
+###2x2 repeated measures ANOVA
+###TODO subscale & block to mydata df
+```{r}
+summarydata = mydata %>% 
+  group_by(id,subscale,block) %>% 
+  summarize(mean_answer=mean(answer)) %>% 
+  ungroup() %>% 
+  mutate(block=factor(block),subscale=factor(subscale),id=factor(id))
+
+summarydata
+results = ezANOVA(data=summarydata, dv=mean_answer, wid=id, within = .(subscale,block), type = 2)
+#results = aov(data=mydata, answer ~ subscale*block + Error(id/subscale*block))
+#summary(results)
+results
+```
+
+###POSTHOC t-test
+
+```{r}
+conditional_df = summarydata %>% 
+  mutate(condition=case_when(
+    subscale=="positive"&block=="progressive" ~ "PP",
+    subscale=="negative"&block=="progressive" ~ "NP",
+    subscale=="positive"&block=="stagnant" ~ "PS",
+    subscale=="negative"&block=="stagnant" ~ "NS"
+    
+  )) %>% 
+  select(-subscale,-block) %>% 
+  spread(condition,mean_answer)
+
+t.test(conditional_df$PP,conditional_df$PS,paired=T,alternative = "greater")
+```
+
