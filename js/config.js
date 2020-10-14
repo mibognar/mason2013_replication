@@ -3,6 +3,8 @@ var wordnum = 0;
 var questionnum = 0;
 var blocknum = 0;
 var shuffled;
+var myblock;
+var mylist;
 var currentBlock;
 var questionword;
 var practice = 1;

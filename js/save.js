@@ -4,7 +4,7 @@ function save_data(participant_data, receiver) {
   xhr.open('POST', receiver);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.onload = function(){
-    console.log(JSON.parse(xhr.responseText));
+    console.log(xhr.responseText);
   }
   xhr.send(mydata);
   console.log("sent");

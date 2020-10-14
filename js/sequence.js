@@ -4,6 +4,7 @@ infodiv = document.getElementById("infodiv");
 questiondiv = document.getElementById('questiondiv');
 greetingsdiv = document.getElementById('greetingsdiv');
 demodiv = document.getElementById('demodiv');
+experimentdiv = document.getElementById('experimentdiv');
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -53,15 +54,21 @@ function blank(wordElement){
 function endPractice(){
   console.log("practice ended");
   practice = 0;
+  infodiv.style.display = "none";
+  experimentdiv.style.display = "block";
 }
 
 function block_decider(block,endFunction){
-  if (practice = 1){
-    var myblock = practiceBlock;
-    var mylist = practiceBlock[listnum];
+  if (practice == 1){
+    myblock = practiceBlock;
+    mylist = practiceBlock[listnum];
   }else{
-    var myblock = database.word_blocks[block];
-    var mylist = database.word_blocks[block][listnum].content;
+    myblock = database.word_blocks[block];
+    if (listnum >= myblock.length){
+      console.log("block overrun");
+    }else{
+      mylist = database.word_blocks[block][listnum].content;
+    }
   }
   if (listnum >= myblock.length){
     shuffled = shuffle(ordered);

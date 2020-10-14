@@ -2,7 +2,9 @@ infodiv = document.getElementById("infodiv");
 questiondiv = document.getElementById('questiondiv');
 greetingsdiv = document.getElementById('greetingsdiv');
 demodiv = document.getElementById('demodiv');
-
+console.log(demodiv);
+practicediv = document.getElementById('practicediv');
+console.log(practicediv);
 function submitDemographics(){
   var demo_data = {};
   demo_data["id"] = id;
@@ -11,6 +13,21 @@ function submitDemographics(){
   demo_data["neptun"] = document.getElementById("neptun").value;
   console.log(demo_data);
   save_data(demo_data,"save_demo.php");
+  document.getElementById('demodiv').style.display = "none";
+  document.getElementById('practicediv').style.display = "block";
+}
+
+function startPractice(){
+  document.getElementById('practicediv').style.display = "none";
+  document.getElementById('infodiv').style.display = "block";
+  blank(wordElement);
+}
+function startExperiment(){
+  document.getElementById('experimentdiv').style.display = "none";
+  document.getElementById('infodiv').style.display = "block";
+  wordnum = 0;
+  listnum = 0;
+  blank(wordElement);
 }
 
 function showDemographics(){

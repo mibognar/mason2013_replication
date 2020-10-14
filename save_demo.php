@@ -6,10 +6,10 @@ $jsonDecoded = json_decode($jsonString, true);
 $date = date("Y-m-d_h-i-sa");
 
 //Give our CSV file a name.
-$csvFileName = 'demographics.csv';
+$csvFileName = 'data/demographics.csv';
 
 //Open file pointer.
-$fp = fopen($csvFileName, 'w');
+$fp = fopen($csvFileName, 'a');
 
 fputcsv($fp, $jsonDecoded);
 fclose($fp);

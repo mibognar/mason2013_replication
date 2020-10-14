@@ -1,6 +1,7 @@
 .infodiv {
   display: flex;
   position: absolute;
+  text-align: center;
   top:50%;left:50%;
   margin-top:-75px;
   margin-left:-100px;
@@ -11,6 +12,7 @@
 .word {
   display: inline;
   position: relative;
+  text-align: center;
   margin:auto;
   line-height:51px;
   vertical-align:middle;
@@ -21,8 +23,7 @@
   position: absolute;
   top:50%;
   left:50%;
-  margin-top:-75px;
-  margin-left:-100px;
+  transform: translate(-50%,-50%);
   height:150px;
 }
 
@@ -83,6 +84,14 @@ h3{
   position: absolute;
   left: 50%;
   transform: translate(-50%);
+}
+
+.practicediv {
+  display:none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }
 .demodiv{
   display: none;
