@@ -1,0 +1,3 @@
+[submodule "mason2013_replication_analysis"]
+	path = mason2013_replication_analysis
+	url = https://github.com/mibognar/mason2013_replication_analysis.git
