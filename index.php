@@ -9,7 +9,6 @@ if ($json["relay"]==1) {
   $json[$relay] = 1;
 }
 $json["id"] = $json["id"] + 1;
-echo $json[$relay];
 file_put_contents($file, json_encode($json));
 header('Location: test.html?relay='.$json[$relay].'&id='.$json["id"]);
 die();

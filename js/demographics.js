@@ -11,13 +11,13 @@ function submitDemographics(){
   demo_data["gender"] = document.getElementById("gender").value;
   demo_data["age"] = document.getElementById("age").value;
   demo_data["neptun"] = document.getElementById("neptun").value;
-  if (document.getElementById("neptun").value){
+  if (document.getElementById("neptun").value.length==6 && document.getElementById("age").value <= 99 && document.getElementById("age").value>=18){
     console.log(demo_data);
     save_data(demo_data,"save_demo.php");
     document.getElementById('demodiv').style.display = "none";
     document.getElementById('practicediv').style.display = "block";
 }else{
-  alert("A teszt elindításához be kell írnod a NEPTUN kódodat");
+  alert("A teszt elindításához megfelelő NEPTUN-kódot és életkort kell megadnod!");
 }
 }
 
